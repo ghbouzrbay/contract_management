@@ -1,0 +1,65 @@
+<odoo>
+    <!-- Vue Liste pour les clients -->
+    <record id="view_custom_customer_tree" model="ir.ui.view">
+        <field name="name">custom.customer.tree</field>
+        <field name="model">custom.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="mobile"/>
+                <field name="country_id"/>
+                <field name="order_count" string="Nombre de commandes"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Formulaire pour les clients -->
+    <record id="view_custom_customer_form" model="ir.ui.view">
+        <field name="name">custom.customer.form</field>
+        <field name="model">custom.customer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="address"/>
+                        <field name="country_id"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                        <field name="mobile"/>
+                        <field name="active"/>
+                        <field name="order_count" readonly="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Commandes">
+                            <field name="order_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="date_order"/>
+                                    <field name="amount_total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action pour afficher les clients -->
+    <record id="action_custom_customer" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">custom.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu pour accéder aux clients -->
+    <menuitem id="menu_custom_customer"
+              name="Clients"
+              parent="menu_custom_orders"
+              action="action_custom_customer"/>
+</odoo>
+

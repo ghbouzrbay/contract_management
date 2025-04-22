@@ -1,0 +1,63 @@
+<odoo>
+    <record id="custom_order_report" model="ir.actions.report">
+        <field name="name">Bon de Commande</field>
+        <field name="model">custom.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">contract_management.report_custom_order_template</field>
+        <field name="report_file">contract_management.report_custom_order_template</field>
+        <field name="binding_model_id" ref="model_custom_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+	<template id="report_custom_order_template">
+    <t t-call="web.external_layout">
+        <t t-foreach="docs" t-as="doc">
+            <main>
+                <div class="page">
+                    <h2>Bon de Commande</h2>
+                    <p><strong>Référence :</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Client :</strong> <t t-esc="doc.customer_id.name"/></p>
+
+                    <!-- Condition pour afficher l'adresse si elle existe -->
+                    <t t-if="doc.customer_id.address">
+                        <p><strong>Adresse :</strong> <t t-esc="doc.customer_id.address"/></p>
+                    </t>
+
+                    <!-- Infos client supplémentaires -->
+                    <t t-if="doc.customer_id.email">
+                        <p><strong>Email :</strong> <t t-esc="doc.customer_id.email"/></p>
+                    </t>
+                    <t t-if="doc.customer_id.phone">
+                        <p><strong>Téléphone :</strong> <t t-esc="doc.customer_id.phone"/></p>
+                    </t>
+                    <t t-if="doc.customer_id.mobile">
+                        <p><strong>Mobile :</strong> <t t-esc="doc.customer_id.mobile"/></p>
+                    </t>
+
+                    <table class="table table-bordered mt32">
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Quantité</th>
+                                <th>Prix Unitaire</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.order_line" t-as="line">
+                                <tr>
+                                    <td><t t-esc="line.product_id.name"/></td>
+                                    <td><t t-esc="line.quantity"/></td>
+                                    <td><t t-esc="line.price_unit"/></td>
+                                    <td><t t-esc="line.price_total"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </t>
+    </t>
+</template>
+	
+</odoo>

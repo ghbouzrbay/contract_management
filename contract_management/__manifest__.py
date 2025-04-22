@@ -1,0 +1,24 @@
+{
+    'name': 'Custom Module',
+    'version': '1.0',
+    'sequence': 10,
+    'summary': 'Module avancé couvrant toutes les fonctionnalités Odoo',
+    'author': 'Ghita',
+    'category': 'Custom',
+    'depends': ['base', 'sale', 'account', 'crm', 'utm'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/menu.xml',
+        'views/customer_views.xml',
+        'views/order_views.xml',
+        'views/products_menu.xml',
+        'views/quotation_template.xml',
+        'views/dashbord_menu.xml',
+        'data/cron_jobs.xml',
+        'report/report_template.xml',
+        'data/ir_sequence.xml',
+    ],
+    'installable': True,
+    'application': True,
+}
+
