@@ -47,7 +47,7 @@
                             </field>
                              <field name="amount_total" readonly="1" string="Total"/>
                         </page>
-                        <page string="Autres Informations">
+                       <!-- <page string="Autres Informations">
                             <group >
                                 <group name="Vente">
                                     <field name="user_id" readonly="1"/>
@@ -65,7 +65,7 @@
                                 </group>
 
                             </group>
-                        </page>
+                        </page>-->
                     </notebook>
 
 
