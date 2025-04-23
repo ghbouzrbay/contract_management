@@ -11,6 +11,7 @@
         'views/menu.xml',
         'views/customer_views.xml',
         'views/order_views.xml',
+	'views/order_form_inherit_view.xml',
         'views/products_menu.xml',
         'views/quotation_template.xml',
         'views/dashbord_menu.xml',

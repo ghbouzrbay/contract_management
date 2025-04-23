@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_custom_order_form_inherit_autres_infos" model="ir.ui.view">
+        <field name="name">custom.order.form.inherit.autres.infos</field>
+        <field name="model">custom.order</field>
+        <field name="inherit_id" ref="your_module_name.view_custom_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Autres Informations">
+                    <group>
+                        <group name="Vente">
+                            <field name="user_id" readonly="1"/>
+                            <field name="team_id"/>
+                            <field name="costumer_reference"/>
+                            <field name="tag_ids"/>
+                        </group>
+                        <group name="Suivi">
+                            <field name="original"/>
+                            <field name="opportunity_id"/>
+                            <field name="medium_id"/>
+                            <field name="source_id"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

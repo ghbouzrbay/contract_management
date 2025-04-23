@@ -61,5 +61,6 @@
               name="Clients"
               parent="menu_custom_orders"
               action="action_custom_customer"/>
+
 </odoo>
 
