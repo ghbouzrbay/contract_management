@@ -1,0 +1,41 @@
+<odoo>
+    <!-- Menu Principal -->
+    <menuitem id="menu_custom_root" name="Gestion Personnalisée" sequence="10"/>
+
+    <!-- Menu Client -->
+    <record id="action_custom_customer" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">custom.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_custom_customer"
+              name="Clients"
+              parent="menu_custom_root"
+              action="action_custom_customer"
+              sequence="10"/>
+
+    <!-- Menu Commande -->
+    <record id="action_custom_order" model="ir.actions.act_window">
+        <field name="name">Commandes</field>
+        <field name="res_model">custom.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_custom_order"
+              name="Commandes"
+              parent="menu_custom_root"
+              action="action_custom_order"
+              sequence="20"/>
+
+    <!-- Menu Modèles de devis -->
+    <record id="action_custom_quotation_template" model="ir.actions.act_window">
+        <field name="name">Modèles de devis</field>
+        <field name="res_model">custom.quotation.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_custom_quotation_template"
+              name="Modèles de devis"
+              parent="menu_custom_root"
+              action="action_custom_quotation_template"
+              sequence="30"/>
+</odoo>
+

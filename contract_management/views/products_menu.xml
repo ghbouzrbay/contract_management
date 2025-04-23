@@ -1,0 +1,19 @@
+<odoo>
+    <!-- Action pour ouvrir la vue produit -->
+    <record id="action_custom_product" model="ir.actions.act_window">
+        <field name="name">Produits</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu parent (si besoin) -->
+    <menuitem id="menu_custom_root" name="Gestion Personnalisée" sequence="10"/>
+
+    <!-- Menu Produits -->
+    <menuitem id="menu_custom_product"
+              name="Produits"
+              parent="menu_custom_root"
+              action="action_custom_product"
+              sequence="20"/>
+</odoo>
+
