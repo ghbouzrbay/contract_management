@@ -32,8 +32,20 @@ La **formation Odoo Technique** est conçue pour les développeurs souhaitant ap
 
 ## 📂 Structure du module
 
-contract_management/ ├── manifest.py ├── models/ │ └── contract.py ├── views/ │ └── contract_views.xml ├── security/ │ ├── ir.model.access.csv │ 
-└── security.xml └── README.md
+contract_management/ 
+├─ __manifest__.py 
+├──__init__.py
+├── mos/
+│ └ contact.py
+├─ views/
+│ └── contract_v.xml
+├── secur/ity
+│  └ ir.model.acccsvess.
+├ ─controlle/
+│  └ main.py
+└─data/
+│ └─ir_sequence.xml
+└── README.md
 
 
 
