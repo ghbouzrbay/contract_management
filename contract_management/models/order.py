@@ -4,7 +4,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-
 class Order(models.Model):
     _name = 'custom.order'
     _description = 'Order Model'
