@@ -10,6 +10,12 @@ class Order(models.Model):
 
     name = fields.Char(string="Référence Commande", required=True, copy=False,
                        default=lambda self: self.env['ir.sequence'].next_by_code('custom.order'))
+    state = fields.Selection([
+    	('draft', 'Brouillon'),
+    	('confirmed', 'Confirmée'),
+    	('delivered', 'Livrée'),
+    	('cancelled', 'Annulée'),
+	], string='État', default='draft')
     customer_id = fields.Many2one('custom.customer', string="Client", required=True)
     address = fields.Text(string="Adresse Client", related='customer_id.address', store=True)
     date_order = fields.Date(string="Date de commande", default=fields.Date.today)
@@ -38,6 +44,16 @@ class Order(models.Model):
     medium_id = fields.Many2one('utm.medium', string="Moyen")
     source_id = fields.Many2one('utm.source', string="Source")
     costumer_reference = fields.Char(string="Réference Client")
+
+
+    def action_confirm(self):
+    	self.state = 'confirmed'
+
+    def action_deliver(self):
+    	self.state = 'delivered'
+
+    def action_cancel(self):
+    	self.state = 'cancelled'
 
 
     @api.depends('order_line.price_total')

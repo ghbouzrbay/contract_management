@@ -21,6 +21,14 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+		    
+                    <!-- BOUTONS D'ACTIONS -->
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirmer" states="draft"/>
+                        <button name="action_deliver" type="object" string="Marquer comme livrée" states="confirmed"/>
+                        <button name="action_cancel" type="object" string="Annuler" states="draft,confirmed"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,delivered,cancelled"/>
+                    </header>
                     <group>
                         <group>
                             <field name="name"/>
