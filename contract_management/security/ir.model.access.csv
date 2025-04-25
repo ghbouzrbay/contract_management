@@ -1,7 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_custom_order_user,access.custom.order.user,model_custom_order,,1,1,1,1
-access_custom_order_line_user,access.custom.order.line.user,model_custom_order_line,,1,1,1,1
-access_custom_customer_user,access.custom.customer.user,model_custom_customer,,1,1,1,1
-access_custom_quotation_template_user,access.custom.quotation.template.user,model_custom_quotation_template,,1,1,1,1
-access_custom_delivery,access_custom_delivery,model_custom_delivery,,1,1,1,1
+access_custom_order_user,access.custom.order.user,model_custom_order,group_order_user,1,1,1,1
+access_custom_order_line_user,access.custom.order.line.user,model_custom_order_line,group_order_user,1,1,1,1
+access_custom_customer_user,access.custom.customer.user,model_custom_customer,group_order_user,1,1,1,1
+access_custom_quotation_template_user,access.custom.quotation.template.user,model_custom_quotation_template,group_order_user,1,1,1,1
+access_custom_delivery,access_custom_delivery,model_custom_delivery,group_order_user,1,1,1,1
+access_custom_delivery_line_manager,access.custom.delivery.line.manager,model_custom_delivery_line,group_order_manager,1,1,1,1
 
