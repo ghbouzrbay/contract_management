@@ -11,11 +11,11 @@ class Order(models.Model):
     name = fields.Char(string="Référence Commande", required=True, copy=False,
                        default=lambda self: self.env['ir.sequence'].next_by_code('custom.order'))
     state = fields.Selection([
-    	('draft', 'Brouillon'),
-    	('confirmed', 'Confirmée'),
-    	('delivered', 'Livrée'),
-    	('cancelled', 'Annulée'),
-	], string='État', default='draft')
+    ('draft', 'Brouillon'),
+    ('confirmed', 'Confirmée'),
+    ('delivered', 'Livrée'),
+    ('cancelled', 'Annulée'),
+    ], string='État', default='draft')
     customer_id = fields.Many2one('custom.customer', string="Client", required=True)
     address = fields.Text(string="Adresse Client", related='customer_id.address', store=True)
     date_order = fields.Date(string="Date de commande", default=fields.Date.today)
@@ -107,11 +107,11 @@ class Order(models.Model):
         return fig.to_html()
 
 
-     def action_confirm(self):
-    	for order in self:
-            # Logique de confirmation
-            if order.state != 'confirmé':
-                order.state = 'confirmé'
+    def action_confirm(self):
+       for order in self:
+        # Logique de confirmation
+           if order.state != 'confirmé':
+               order.state = 'confirmé'
 
         # Création automatique du BL
         delivery = self.env['custom.delivery'].create({
@@ -133,9 +133,10 @@ class Order(models.Model):
                 'quantity_delivered': quantity_delivered,
             })
 
-     def _compute_delivery_count(self):
-    	for order in self:
+    def _compute_delivery_count(self):
+       for order in self:
            order.delivery_count = self.env['custom.delivery'].search_count([('order_id', '=', order.id)])
+
 
 
 
