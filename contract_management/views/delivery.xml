@@ -1,4 +1,5 @@
 <odoo>
+    <!-- Vue Liste Livraison -->
     <record id="view_custom_delivery_tree" model="ir.ui.view">
         <field name="name">custom.delivery.tree</field>
         <field name="model">custom.delivery</field>
@@ -12,6 +13,7 @@
         </field>
     </record>
 
+    <!-- Vue Formulaire Livraison -->
     <record id="view_custom_delivery_form" model="ir.ui.view">
         <field name="name">custom.delivery.form</field>
         <field name="model">custom.delivery</field>
@@ -20,19 +22,28 @@
                 <sheet>
                     <group>
                         <field name="name"/>
-                        <field name="order_id"/>
+                        <field name="order_id" readonly="1"/>
                         <field name="delivery_date"/>
-                        <field name="state"/>
                     </group>
+                    <field name="delivery_line_ids">
+                        <tree editable="bottom">
+                            <field name="product_id"/>
+                            <field name="quantity_ordered"/>
+                            <field name="quantity_delivered"/>
+                        </tree>
+                    </field>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="action_custom_delivery" model="ir.actions.act_window">
+    <!-- Action Livraison depuis Commande -->
+    <record id="action_custom_delivery_from_order" model="ir.actions.act_window">
         <field name="name">Livraisons</field>
         <field name="res_model">custom.delivery</field>
+        <field name="domain">[('order_id', '=', active_id)]</field>
         <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
     </record>
 </odoo>
 
