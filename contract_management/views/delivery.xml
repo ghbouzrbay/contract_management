@@ -1,0 +1,45 @@
+<odoo>
+    <!-- Vue liste -->
+    <record id="view_custom_delivery_tree" model="ir.ui.view">
+        <field name="name">custom.delivery.tree</field>
+        <field name="model">custom.delivery</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="order_id"/>
+                <field name="delivery_date"/>
+                <field name="delivered"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue formulaire -->
+    <record id="view_custom_delivery_form" model="ir.ui.view">
+        <field name="name">custom.delivery.form</field>
+        <field name="model">custom.delivery</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="order_id"/>
+                        <field name="delivery_date"/>
+                        <field name="delivered"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_custom_delivery" model="ir.actions.act_window">
+        <field name="name">Livraisons</field>
+        <field name="res_model">custom.delivery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_custom_delivery" name="Livraisons" parent="menu_custom_orders" sequence="20" action="action_custom_delivery"/>
+</odoo>
+
