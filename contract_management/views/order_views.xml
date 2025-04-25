@@ -21,7 +21,16 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-		    
+		    <!-- SMART BOUTON DE LIVRAISON -->
+		    <div class="oe_button_box" name="button_box">
+			    <button name="%(action_custom_delivery)d"
+            			type="action"
+            			class="oe_stat_button"
+            	    	    icon="fa-truck">
+        	    		<field name="delivery_ids" widget="statinfo" string="Livraisons"/>
+    			    </button>
+		    </div>
+
                     <!-- BOUTONS D'ACTIONS -->
                     <header>
                         <button name="action_confirm" type="object" string="Confirmer" states="draft"/>

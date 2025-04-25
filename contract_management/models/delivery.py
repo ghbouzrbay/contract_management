@@ -9,6 +9,12 @@ class CustomDelivery(models.Model):
     delivery_date = fields.Date(string="Date de livraison", required=True)
     delivered = fields.Boolean(string="Livré", default=False)
     note = fields.Text(string="Note")
+    customer_id = fields.Many2one(related='order_id.customer_id', string="Client", store=True)
+    state = fields.Selection([
+        ('draft', 'Brouillon'),
+        ('done', 'Fait'),
+    ], string='Statut', default='draft')
+
 
     @api.model
     def create(self, vals):

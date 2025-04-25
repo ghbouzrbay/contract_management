@@ -15,6 +15,7 @@
         'views/products_menu.xml',
         'views/quotation_template.xml',
         'views/dashbord_menu.xml',
+	'views/delivery_views.xml',
         'data/cron_jobs.xml',
         'report/report_template.xml',
         'data/ir_sequence.xml',

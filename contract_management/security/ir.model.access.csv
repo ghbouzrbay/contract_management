@@ -3,4 +3,5 @@ access_custom_order_user,access.custom.order.user,model_custom_order,,1,1,1,1
 access_custom_order_line_user,access.custom.order.line.user,model_custom_order_line,,1,1,1,1
 access_custom_customer_user,access.custom.customer.user,model_custom_customer,,1,1,1,1
 access_custom_quotation_template_user,access.custom.quotation.template.user,model_custom_quotation_template,,1,1,1,1
+access_custom_delivery,access_custom_delivery,model_custom_delivery,,1,1,1,1
 

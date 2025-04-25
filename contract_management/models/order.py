@@ -44,8 +44,10 @@ class Order(models.Model):
     medium_id = fields.Many2one('utm.medium', string="Moyen")
     source_id = fields.Many2one('utm.source', string="Source")
     costumer_reference = fields.Char(string="Réference Client")
+    delivery_ids = fields.One2many('custom.delivery', 'order_id', string="Livraisons")
 
 
+    #Les actions presentent l'etat de commande
     def action_confirm(self):
     	self.state = 'confirmed'
 
@@ -103,6 +105,22 @@ class Order(models.Model):
         # Crée un graphique à barres avec Plotly
         fig = px.bar(x=customers, y=totals, labels={'x': 'Client', 'y': 'Total des ventes'})
         return fig.to_html()
+
+
+     def action_confirm(self):
+        for order in self:
+            # Logique de confirmation
+            if order.state != 'confirmé':
+                order.state = 'confirmé'
+
+            # Création automatique du BL
+            self.env['custom.delivery'].create({
+                'name': self.env['ir.sequence'].next_by_code('custom.delivery') or 'New',
+                'order_id': order.id,
+                'delivery_date': fields.Date.today(),
+            })
+
+
 
 
 

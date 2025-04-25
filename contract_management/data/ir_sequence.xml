@@ -13,6 +13,18 @@
             <field name="active">True</field>
         </record>
 
+	
+	
+	<!-- Séquence por les livraisons -->
+	<record id="seq_custom_delivery" model="ir.sequence">
+    	   <field name="name">Livraison</field>
+           <field name="code">custom.delivery</field>
+           <field name="prefix">DLV-</field>
+           <field name="padding">4</field>
+           <field name="company_id" eval="False"/>
+	</record>
+
+
     </data>
 </odoo>
 
