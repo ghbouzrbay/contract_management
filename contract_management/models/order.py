@@ -45,7 +45,7 @@ class Order(models.Model):
     source_id = fields.Many2one('utm.source', string="Source")
     costumer_reference = fields.Char(string="Réference Client")
     delivery_ids = fields.One2many('custom.delivery', 'order_id', string="Livraisons")
-
+    delivery_count = fields.Integer(string="Nombre de livraisons", compute="_compute_delivery_count")
 
     #Les actions presentent l'etat de commande
     def action_confirm(self):
@@ -108,19 +108,34 @@ class Order(models.Model):
 
 
      def action_confirm(self):
-        for order in self:
+    	for order in self:
             # Logique de confirmation
             if order.state != 'confirmé':
                 order.state = 'confirmé'
 
-            # Création automatique du BL
-            self.env['custom.delivery'].create({
-                'name': self.env['ir.sequence'].next_by_code('custom.delivery') or 'New',
-                'order_id': order.id,
-                'delivery_date': fields.Date.today(),
+        # Création automatique du BL
+        delivery = self.env['custom.delivery'].create({
+            'name': self.env['ir.sequence'].next_by_code('custom.delivery') or 'New',
+            'order_id': order.id,
+            'delivery_date': fields.Date.today(),
+        })
+
+        # Création des lignes de livraison avec les quantités selon le stock
+        for line in order.order_line:
+            available_qty = line.product_id.qty_available  # Quantité disponible en stock
+            # Si stock suffisant, on livre tout, sinon on livre ce qu'on a
+            quantity_delivered = line.quantity if available_qty >= line.quantity else available_qty
+
+            self.env['custom.delivery.line'].create({
+                'delivery_id': delivery.id,
+                'product_id': line.product_id.id,
+                'quantity_ordered': line.quantity,
+                'quantity_delivered': quantity_delivered,
             })
 
-
+     def _compute_delivery_count(self):
+    	for order in self:
+           order.delivery_count = self.env['custom.delivery'].search_count([('order_id', '=', order.id)])
 
 
 
