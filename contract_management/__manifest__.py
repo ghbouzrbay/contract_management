@@ -7,6 +7,7 @@
     'category': 'Custom',
     'depends': ['base', 'sale', 'account', 'crm', 'utm'],
     'data': [
+	'security/security_groups.xml',
         'security/ir.model.access.csv',
         'views/menu.xml',
         'views/customer_views.xml',

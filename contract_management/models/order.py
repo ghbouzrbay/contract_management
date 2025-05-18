@@ -73,14 +73,14 @@ class Order(models.Model):
 
 
     # Méthode pour récupérer les valeurs du rapport
-        @api.model
-        def get_report_values(self, docids, data=None):
-            docs = self.browse(docids)  # Récupère les commandes par leurs IDs
-            return {
-                'doc_ids': docids,
-                'doc_model': 'custom.order',
-                'docs': docs,  # Assurez-vous que vous passez 'docs' et non 'doc'
-            }
+    @api.model
+    def get_report_values(self, docids, data=None):
+        docs = self.browse(docids)  # Récupère les commandes par leurs IDs
+        return {
+            'doc_ids': docids,
+            'doc_model': 'custom.order',
+            'docs': docs,  # Assurez-vous que vous passez 'docs' et non 'doc'
+        }
 
 
     #Le champ + La relation de module de commande et le modèle de devis

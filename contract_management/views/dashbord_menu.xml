@@ -1,0 +1,17 @@
+<odoo>
+    
+    <!-- Menu Tableau d Bord des commandes -->
+    <record id="action_order_dashbord" model="ir.actions.act_window">
+        <field name="name">Tableau de Bord</field>
+        <field name="res_model">custom.customer</field>
+        <field name="view_mode">graph</field>
+    </record>
+   
+    <menuitem id="menu_custom_quotation_template"
+              name="Tableau de Bord"
+              parent="menu_custom_root"
+              action="action_order_dashbord"
+              sequence="40"/>
+</odoo>
+
+
